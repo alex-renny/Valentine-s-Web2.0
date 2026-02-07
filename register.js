@@ -1,7 +1,8 @@
+console.log("✅ register.js loaded");
+
 const form = document.getElementById("regForm");
 const msg = document.getElementById("msg");
 
-/* Loader */
 const overlay = document.createElement("div");
 overlay.id = "themeLoader";
 overlay.innerHTML = `
@@ -17,10 +18,9 @@ form.addEventListener("submit", function (e) {
 
   overlay.classList.add("active");
   msg.textContent = "";
-  msg.className = "";
 
   fetch(
-    "https://script.google.com/macros/s/AKfycbydYTbU970-FgRCGphbSgJsaUPhWjwBVHjxDf6A1HesLxWUl00zIawfxHgfoEKiXIaqMw/exec",
+    "https://script.google.com/macros/s/AKfycbzRKacm7KWHrJf-X7VsCPLOGxjYePS59oho_-owWq-8FMu5egl-hjAsb7PZXENlu-oH/exec",
     {
       method: "POST",
       mode: "no-cors",
@@ -31,7 +31,7 @@ form.addEventListener("submit", function (e) {
   setTimeout(() => {
     overlay.classList.remove("active");
     msg.textContent = "✅ Registration Submitted!";
-    msg.classList.add("success");
+    msg.className = "success";
     form.reset();
-  }, 1500);
+  }, 1200);
 });
