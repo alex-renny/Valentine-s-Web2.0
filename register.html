@@ -13,43 +13,42 @@
 </video>
 
 <section>
-    <div class="signin">
-      <div class="content">
-        <h2>Registration Form</h2>
+  <div class="signin">
+    <div class="content">
+      <h2>Registration Form</h2>
 
-        <form id="regForm" class="form">
-          <div class="inputBox">
-            <input type="text" name="name" required>
-            <i>Full Name</i>
-          </div>
+      <form id="regForm" class="form">
+        <div class="inputBox">
+          <input type="text" name="name" required>
+          <i>Full Name</i>
+        </div>
 
-          <div class="inputBox">
-            <input type="text" name="department" required>
-            <i>Department</i>
-          </div>
+        <div class="inputBox">
+          <input type="text" name="department" required>
+          <i>Department</i>
+        </div>
 
-          <div class="inputBox">
-            <input type="text" name="semester" required>
-            <i>Semester</i>
-          </div>
+        <div class="inputBox">
+          <input type="text" name="semester" required>
+          <i>Semester</i>
+        </div>
 
-          <div class="inputBox">
-            <input type="tel" name="phone" required>
-            <i>Phone Number</i>
-          </div>
+        <div class="inputBox">
+          <input type="tel" name="phone" pattern="[0-9]{10}" required>
+          <i>Phone Number</i>
+        </div>
 
-          <div class="inputBox">
-            <input type="email" name="email" required>
-            <i>Email</i>
-          </div>
+        <div class="inputBox">
+          <input type="email" name="email" required>
+          <i>Email</i>
+        </div>
 
-          <input type="submit" value="Register">
-          <p id="msg"></p>
-        </form>
-      </div>
+        <input type="submit" value="Register">
+        <p id="msg"></p>
+      </form>
     </div>
-  </section>
-
+  </div>
+</section>
 
 <script src="register.js"></script>
 </body>

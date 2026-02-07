@@ -1,40 +1,40 @@
 const form = document.getElementById("regForm");
 const msg = document.getElementById("msg");
 
+/* Create themed loading screen dynamically */
+const overlay = document.createElement("div");
+overlay.id = "themeLoader";
+overlay.innerHTML = `
+  <div class="loaderCard">
+    <div class="neonLoader"></div>
+    <p>Submitting...</p>
+  </div>
+`;
+document.body.appendChild(overlay);
+
 form.addEventListener("submit", function (e) {
   e.preventDefault();
 
-  msg.textContent = "Submitting...";
-  msg.style.color = "white";
+  // Show themed loading screen
+  overlay.classList.add("active");
+  msg.textContent = "";
+  msg.className = "";
 
-  const data = {
-    name: form.name.value,
-    department: form.department.value,
-    semester: form.semester.value,
-    phone: form.phone.value,
-    email: form.email.value
-  };
-
-  fetch("https://script.google.com/macros/s/AKfycbwyEInb2RPV4rdUznTOh03eDXwqZRxgoI--jElCMXiSfE38AZMYtqAaU0tpeeiKmhQa/exec", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(data)
-  })
-  .then(res => res.json())
-  .then(result => {
-    if (result.status === "success") {
-      msg.textContent = "✅ Registration Successful!";
-      msg.style.color = "green";
-      form.reset();
-    } else {
-      throw new Error("Server error");
+  // Send data to Google Apps Script
+  fetch(
+    "https://script.google.com/macros/s/AKfycbydYTbU970-FgRCGphbSgJsaUPhWjwBVHjxDf6A1HesLxWUl00zIawfxHgfoEKiXIaqMw/exec",
+    {
+      method: "POST",
+      mode: "no-cors",
+      body: new FormData(form)
     }
-  })
-  .catch(err => {
-    console.error(err);
-    msg.textContent = "❌ Registration Failed. Try again.";
-    msg.style.color = "red";
-  });
+  );
+
+  // Hide loader and show success
+  setTimeout(() => {
+    overlay.classList.remove("active");
+    msg.textContent = "✅ Registration Submitted!";
+    msg.classList.add("success");
+    form.reset();
+  }, 1600);
 });
