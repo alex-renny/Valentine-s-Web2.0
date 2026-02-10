@@ -1,5 +1,5 @@
 // ================= COUNTDOWN =================
-const endDate = new Date("February 13, 2026 11:15:00").getTime();
+const endDate = new Date("February 16, 2026 11:15:00").getTime();
 const countdown = document.getElementById("countdown");
 
 if (countdown) {
@@ -14,14 +14,19 @@ if (countdown) {
 
     document.getElementById("days").textContent =
       Math.floor(diff / (1000 * 60 * 60 * 24));
+
     document.getElementById("hours").textContent =
       Math.floor((diff / (1000 * 60 * 60)) % 24);
+
     document.getElementById("minutes").textContent =
       Math.floor((diff / (1000 * 60)) % 60);
+
     document.getElementById("seconds").textContent =
       Math.floor((diff / 1000) % 60);
+
   }, 1000);
 }
+
 
 // ================= PAGE TRANSITION =================
 document.querySelectorAll("a[href]").forEach(link => {
